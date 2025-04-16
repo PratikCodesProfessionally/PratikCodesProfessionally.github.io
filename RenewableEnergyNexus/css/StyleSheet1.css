@@ -1,0 +1,807 @@
+/* ==================== */
+/* BASE STYLES */
+/* ==================== */
+:root {
+    --primary: #4CAF50;
+    --secondary: #333;
+    --accent: #FFC107;
+    --light: #f8f9fa;
+    --dark: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./Images/windmills.jpg') no-repeat center center fixed;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+/* Accessibility and Reduced Motion */
+:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ==================== */
+/* COMPONENTS */
+/* ==================== */
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1em;
+    background-color: var(--dark);
+    color: white;
+    opacity: 0;
+}
+
+    .skip-link:focus {
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+
+/* Header */
+header {
+    background: rgba(76, 175, 80, 0.95);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Navigation */
+nav {
+    background: rgba(51, 51, 51, 0.95);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+    }
+
+        nav a:hover, nav a:focus {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    flex: 1;
+}
+
+/* Blog Post */
+.blog-post {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+    .blog-post:hover {
+        transform: translateY(-5px);
+    }
+
+    .blog-post h2 {
+        color: var(--accent);
+        margin-top: 0;
+    }
+
+    .blog-post p {
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+
+/* Features Grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.feature-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+    .feature-card:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+    }
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+/* Education Section */
+.education-section {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+    .education-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+        color: var(--accent);
+        position: relative;
+        display: inline-block;
+    }
+
+        .education-section h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 25%;
+        }
+
+.energy-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.energy-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .energy-card.hydrogen {
+        border-left: 4px solid #4CAF50;
+    }
+
+        .energy-card.hydrogen .energy-icon {
+            color: #4CAF50;
+        }
+
+    .energy-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+.energy-header {
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.energy-icon {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.energy-content {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, display 0.2s step-end;
+    display: none;
+}
+
+.energy-card.active .energy-content {
+    max-height: 500px;
+    padding: 0 1.5rem 1.5rem;
+    transition: max-height 0.5s ease, display 0.2s step-start;
+    display: block;
+}
+
+.energy-card h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+/* Hydrogen Comparison Table */
+.hydrogen-comparison {
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+    .hydrogen-comparison table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+
+    .hydrogen-comparison th,
+    .hydrogen-comparison td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hydrogen-comparison th {
+        background: rgba(0,0,0,0.2);
+    }
+
+/* Interactive Map */
+#projects-map {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Consultation Section */
+.consultation-section {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    border-radius: 10px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+    .section-header h2 {
+        color: var(--accent);
+        font-size: 2.2rem;
+    }
+
+.consultation-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.consultation-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+    .consultation-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+.consultation-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+/* User Engagement */
+.engagement {
+    margin-top: 2rem;
+}
+
+.reaction-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+    .reaction-buttons button {
+        background: rgba(255,255,255,0.1);
+        border: none;
+        padding: 0.5rem 1rem;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+        .reaction-buttons button:hover {
+            background: var(--primary);
+        }
+
+/* Footer */
+footer {
+    background: var(--dark);
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+    .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+.photo-credit {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 1rem;
+}
+
+    .photo-credit a {
+        color: var(--accent);
+        text-decoration: none;
+    }
+
+/* ==================== */
+/* CALCULATOR ENHANCEMENTS */
+/* ==================== */
+
+/* Market badge styling */
+.market-badge {
+    display: inline-block;
+    font-size: 0.65em;
+    background: rgba(255, 193, 7, 0.2);
+    color: var(--accent);
+    padding: 0.25em 0.75em;
+    border-radius: 1em;
+    margin-left: 0.75em;
+    border: 1px solid var(--accent);
+    vertical-align: middle;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Price disclaimer box */
+.price-disclaimer {
+    background: rgba(76, 175, 80, 0.1);
+    border-left: 3px solid var(--primary);
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+    font-size: 0.85rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.price-disclaimer i {
+    color: var(--accent);
+    margin-right: 0.5rem;
+}
+
+.price-disclaimer ul {
+    margin: 0.5rem 0 0 1rem;
+    padding-left: 1rem;
+    list-style-type: square;
+}
+
+.price-disclaimer li {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+/* Enhanced calculator inputs */
+.calculator {
+    padding: 1rem 0;
+}
+
+.calculator label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-weight: 500;
+}
+
+.calculator input,
+.calculator select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.calculator input:focus,
+.calculator select:focus {
+    background: rgba(255,255,255,0.25);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.3);
+}
+
+.calculator button {
+    width: 100%;
+    margin: 1.5rem 0;
+    padding: 0.75rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calculator button:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Results display */
+.calculator-results {
+    margin: 1rem 0;
+    padding: 1.25rem;
+    background: rgba(0,0,0,0.25);
+    border-radius: 4px;
+    border-left: 4px solid var(--primary);
+}
+
+/* Disclaimer text */
+.disclaimer {
+    margin-top: 1rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.disclaimer a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+    transition: all 0.2s ease;
+}
+
+.disclaimer a:hover {
+    border-bottom-style: solid;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .market-badge {
+        display: block;
+        width: fit-content;
+        margin: 0.5rem auto 0;
+    }
+    
+    .price-disclaimer {
+        font-size: 0.8rem;
+    }
+}
+
+/* Consultation Buttons */
+.consult-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+    .consult-btn:hover {
+        background: var(--accent);
+    }
+
+/* Newsletter Form */
+.newsletter {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+    .newsletter-form input {
+        flex: 1;
+        padding: 0.75rem;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: white;
+        border-radius: 4px;
+    }
+
+    .newsletter-form button {
+        padding: 0 1.5rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .newsletter-form button:hover {
+            background: var(--accent);
+        }
+
+.subscription-message {
+    margin-top: 1rem;
+    color: var(--accent);
+}
+
+/* ==================== */
+/* OVERLAYS */
+/* ==================== */
+/* Consultation Modal */
+.consult-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: rgba(51, 51, 51, 0.95);
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--accent);
+    transition: transform 0.2s ease;
+}
+
+    .close-modal:hover {
+        transform: scale(1.2);
+    }
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal Form */
+.modal-content .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 4px;
+}
+
+.modal-content textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ==================== */
+/* UTILITIES */
+/* ==================== */
+/* Prevent unwanted fade-outs */
+@keyframes forceShow {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.features,
+.energy-types {
+    animation: forceShow 1ms both !important;
+}
+
+/* No-JS fallback */
+.no-js .features,
+.no-js .energy-types,
+.no-js .calculator,
+.no-js .energy-content {
+    opacity: 1 !important;
+    display: block !important;
+}
+
+/* ==================== */
+/* MEDIA QUERIES */
+/* ==================== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+        nav a {
+            width: 100%;
+            text-align: center;
+        }
+
+    .features, .energy-types {
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+        .newsletter-form button {
+            padding: 0.75rem;
+        }
+
+    /* Modal adjustments */
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .close-modal {
+        top: 0.5rem;
+        right: 1rem;
+    }
+}
+/* Article Cards */
+.article-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+    .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+.article-header {
+    padding: 1.5rem 1.5rem 0;
+}
+
+.article-card h3 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.article-meta {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.article-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.article-content {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.article-excerpt {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.read-more {
+    color: var(--accent);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+    .read-more:hover {
+        color: white;
+        transform: translateX(5px);
+    }
+
+/* View More Button */
+.view-more-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.view-more-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .view-more-btn:hover {
+        background: var(--accent);
+        transform: translateY(-2px);
+    }

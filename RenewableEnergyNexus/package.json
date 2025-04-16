@@ -1,0 +1,14 @@
+{
+  "name": "renewable-energy-nexus",
+  "version": "0.0.0",
+  "description": "RenewableEnergyNexus",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0"
+  },
+  "eslintConfig": {
+  }
+}

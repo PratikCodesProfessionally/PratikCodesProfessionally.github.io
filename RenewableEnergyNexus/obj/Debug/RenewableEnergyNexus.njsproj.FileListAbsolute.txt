@@ -1,0 +1,3 @@
+C:\Users\prati\Desktop\RenewableEnergyNexus\RenewableEnergyNexus\obj\Debug\RenewableEnergyNexus.njsproj.AssemblyReference.cache
+C:\Users\prati\Desktop\RenewableEnergyNexus\RenewableEnergyNexus\obj\Debug\RenewableEnergyNexus.njsproj.CoreCompileInputs.cache
+C:\Users\prati\Desktop\RenewableEnergyNexus\RenewableEnergyNexus\bin\Microsoft.NodejsTools.WebRole.dll
