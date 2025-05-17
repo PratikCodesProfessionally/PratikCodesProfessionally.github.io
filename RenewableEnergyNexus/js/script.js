@@ -12,7 +12,7 @@ function initMap() {
 
     map = L.map('projects-map').setView([20, 0], 2);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+        attribution: 'Â© OpenStreetMap contributors'
     }).addTo(map);
 
     const projects = [
@@ -155,11 +155,11 @@ function calculateSavingsDE() {
         <div class="results-grid">
             <div class="result-item">
                 <p class="result-label">Monthly Savings</p>
-                <p class="result-value">€${monthlySavings.toFixed(2)}</p>
+                <p class="result-value">â‚¬${monthlySavings.toFixed(2)}</p>
             </div>
             <div class="result-item">
                 <p class="result-label">Annual Savings</p>
-                <p class="result-value">€${(monthlySavings * 12).toFixed(2)}</p>
+                <p class="result-value">â‚¬${(monthlySavings * 12).toFixed(2)}</p>
             </div>
             <div class="result-item">
                 <p class="result-label">CO? Reduction</p>
@@ -215,6 +215,12 @@ function loadArticles() {
                 excerpt: "Exploring the potential of deep-water wind energy installations.",
                 category: "wind"
             }
+             {
+                 id: 3,
+                 title: "Germanyâ€™s Energy Ballet: Where Electrons Waltz and Batteries Pirouette",
+                 excerpt: "The future grid?"
+                 category: "Battery"
+             }
         ];
 
         const container = document.getElementById('articles-container');
