@@ -724,7 +724,7 @@ footer {
 }
 /* Article Cards */
 .article-card {
-    background: rgba(255, 255, 255, 0.1);
+     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 8px;
     overflow: hidden;
@@ -733,9 +733,9 @@ footer {
     transition: all 0.3s ease;
     /*width: 100vw;
     height: 100px; added to correct the article expansion width but didnot work*/
-    width: 90%;
+    /*width: 90%;
     max-width: 1200px;
-    margin:0 auto;
+    margin:0 auto;*/
 }
 
     .article-card:hover {
