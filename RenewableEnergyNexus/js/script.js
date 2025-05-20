@@ -155,14 +155,14 @@ function calculateSavingsDE() {
         <div class="results-grid">
             <div class="result-item">
                 <p class="result-label">Monthly Savings</p>
-                <p class="result-value">€${monthlySavings.toFixed(2)}</p>
+                <p class="result-value">${monthlySavings.toFixed(2)} Euros</p>
             </div>
             <div class="result-item">
                 <p class="result-label">Annual Savings</p>
-                <p class="result-value">€${(monthlySavings * 12).toFixed(2)}</p>
+                <p class="result-value">${(monthlySavings * 12).toFixed(2)} Euros</p>
             </div>
             <div class="result-item">
-                <p class="result-label">CO? Reduction</p>
+                <p class="result-label">CO2 Reduction</p>
                 <p class="result-value">${annualCO2.toFixed(0)} kg/year</p>
             </div>
         </div>
