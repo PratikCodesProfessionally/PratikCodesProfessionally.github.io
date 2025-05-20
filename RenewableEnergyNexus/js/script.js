@@ -219,7 +219,7 @@ function loadArticles() {
                  id: 3,
                  title: "Germany’s Energy Ballet: Where Electrons Waltz and Batteries Pirouette",
                  excerpt: "The future grid?",
-                 category: "Battery"
+                 category: "battery"
              }
         ];
 
