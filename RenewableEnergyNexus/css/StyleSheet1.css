@@ -106,7 +106,7 @@ nav {
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
-    width: 90vw;
+    width: 1000px;
 }
 
     .blog-post:hover {
@@ -729,6 +729,8 @@ footer {
     margin-bottom: 2rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    /*width: 100vw;
+    height: 100px; added to correct the article expansion width but didnot work*/
 }
 
     .article-card:hover {
@@ -806,3 +808,4 @@ footer {
         background: var(--accent);
         transform: translateY(-2px);
     }
+
