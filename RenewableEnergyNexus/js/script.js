@@ -151,7 +151,7 @@ function calculateSavingsDE() {
     const annualCO2 = kWh * co2 * 12;
 
     resultsDiv.innerHTML = `
-        <h4>Estimated Savings <span class="co2-badge">CO? Reduction Calculator</span></h4>
+        <h4>Estimated Savings <span class="co2-badge">CO2 Reduction Calculator</span></h4>
         <div class="results-grid">
             <div class="result-item">
                 <p class="result-label">Monthly Savings</p>
