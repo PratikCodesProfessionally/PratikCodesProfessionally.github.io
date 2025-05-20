@@ -214,11 +214,11 @@ function loadArticles() {
                 title: "Offshore Wind Farms: Challenges and Opportunities",
                 excerpt: "Exploring the potential of deep-water wind energy installations.",
                 category: "wind"
-            }
+            },
              {
                  id: 3,
                  title: "Germany’s Energy Ballet: Where Electrons Waltz and Batteries Pirouette",
-                 excerpt: "The future grid?"
+                 excerpt: "The future grid?",
                  category: "Battery"
              }
         ];
