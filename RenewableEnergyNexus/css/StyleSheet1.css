@@ -763,12 +763,10 @@ footer {
 
 .article-image {
     
-    height: 250px;
+     width: 50%;
+    height: 200px;
     object-fit: cover;
-    margin-bottom: 1rem;
-     max-width: 850px;
-     width: 150%;
-     margin:0 auto;
+    margin-bottom: 0 auto;
 }
 
 .article-content {
