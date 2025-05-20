@@ -106,8 +106,9 @@ nav {
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
-    width: 850px;
-    margin:0 auto;
+     max-width: 850px;
+     width: 200%;
+     margin:0 auto;
 }
 
     .blog-post:hover {
